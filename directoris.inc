@@ -56,3 +56,23 @@ function esborra_directori($dir)
         return "Plase, insert the name of the folder";
     }
 }
+
+function mou_directori($dir, $rutadesti)
+{
+    $currentDir = HOME . DIRECTORY_SEPARATOR . $dir;
+    $destiny = HOME . DIRECTORY_SEPARATOR . $rutadesti;
+
+    if ($dir != null && $rutadesti != null) {
+        if (file_exists($currentDir)) {
+            if (rename($currentDir, $destiny . DIRECTORY_SEPARATOR . $dir)) {
+                return "$dir folder moved to $rutadesti successfully";
+            } else {
+                return "Something went wrong";
+            }
+        } else {
+            return "$dir does not exists";
+        }
+    } else {
+        return "Plase, enter the name of the folder and the rute";
+    }
+}
