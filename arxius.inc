@@ -89,3 +89,27 @@ function mou_fitxer($fitxer, $rutadesti)
         return "Please, insert a name for the file and rute";
     }
 }
+
+function copia_fitxer($fitxer, $rutadesti)
+{
+    $currentFile = HOME . DIRECTORY_SEPARATOR . $fitxer;
+    $destiny = HOME . DIRECTORY_SEPARATOR . $rutadesti;
+
+    if ($fitxer != null && $rutadesti != null) {
+        if (file_exists($currentFile)) {
+            if (is_dir($destiny)) {
+                if (copy($currentFile, $destiny . DIRECTORY_SEPARATOR . $fitxer)) {
+                    return "$fitxer copied to: $rutadesti successfully";
+                } else {
+                    return "Something went wrong coping $fitxer";
+                }
+            } else {
+                return "$rutadesti is not a dir";
+            }
+        } else {
+            return "$fitxer does not exist";
+        }
+    } else {
+        return "Please, insert the file name and rute";
+    }
+}
