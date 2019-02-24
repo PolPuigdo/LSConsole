@@ -19,3 +19,30 @@ function find_fitxer($fitxer, $dir)
         return "Plase, insert the file and the dir";
     }
 }
+
+function stats_fitxer($fitxer)
+{
+    $currentFile = HOME . DIRECTORY_SEPARATOR . $fitxer;
+
+    if ($fitxer != null) {
+        if (file_exists($currentFile)) {
+            $fileStats = Array();
+            $statsReturned = stat($currentFile);
+
+            $userId = "ID of the user property -> " . $statsReturned['uid'];
+            $groupId = "ID of the group property -> " . $statsReturned['gid'];
+            $accessDate = "Last acces -> " . gmdate("d-m-Y H:i:s", $statsReturned['atime']);
+            $modifiedDate = "Last modification -> " . gmdate("d-m-Y H:i:s", $statsReturned['mtime']);
+            $sizeBytes = "Size (bytes) -> " . $statsReturned['size'];
+
+            array_push($fileStats, $userId, $groupId, $accessDate, $modifiedDate, $sizeBytes);
+
+            return $fileStats;
+        } else {
+            return "$fitxer does not exist";
+        }
+    } else {
+        return "Please, insert the name of the file";
+    }
+
+}
