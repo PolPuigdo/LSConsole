@@ -76,3 +76,27 @@ function mou_directori($dir, $rutadesti)
         return "Plase, enter the name of the folder and the rute";
     }
 }
+
+function copia_directori($dir, $rutadesti)
+{
+    $currentDir = HOME . DIRECTORY_SEPARATOR . $dir;
+
+    if ($dir != null && $rutadesti != null) {
+        if (is_dir($currentDir)) {
+            $files = scandir($currentDir);
+            $filesToCopy = Array();
+
+            foreach ($files as $item) {
+                if ($item != "." && $item != "..") {
+                    array_push($filesToCopy, copia_fitxer($dir.DIRECTORY_SEPARATOR.$item, $rutadesti));
+                }
+            }
+
+            return $filesToCopy;
+        } else {
+            return "$dir is not a dir";
+        }
+    } else {
+        return "Please, insert the name of the dir and the rute";
+    }
+}
