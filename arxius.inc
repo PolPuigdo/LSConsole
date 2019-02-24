@@ -69,3 +69,23 @@ function esborra_fitxer($fitxer)
     }
 
 }
+
+function mou_fitxer($fitxer, $rutadesti)
+{
+    $currentFile = HOME . DIRECTORY_SEPARATOR . $fitxer;
+    $destiny = HOME . DIRECTORY_SEPARATOR . $rutadesti;
+
+    if ($fitxer != null && $rutadesti != null) {
+        if (file_exists($currentFile)) {
+            if (rename($currentFile, $destiny . DIRECTORY_SEPARATOR . $fitxer)) {
+                return "$fitxer moved to: $rutadesti successfully";
+            } else {
+                return "Something went wrong moving $fitxer to $rutadesti";
+            }
+        } else {
+            return "$fitxer does not exist";
+        }
+    } else {
+        return "Please, insert a name for the file and rute";
+    }
+}
