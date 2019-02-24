@@ -113,3 +113,36 @@ function copia_fitxer($fitxer, $rutadesti)
         return "Please, insert the file name and rute";
     }
 }
+
+function crea_modifica_fitxer($fitxer, $contingut)
+{
+    $currentFile = HOME . DIRECTORY_SEPARATOR . $fitxer;
+
+    if ($fitxer != null) {
+        if (!file_exists($currentFile) && empty($contingut)) {
+            if (touch($currentFile)) {
+                return "$fitxer created successfully";
+            } else {
+                return "Something went wrong creating $fitxer";
+            }
+        } else if (!file_exists($currentFile) && !empty($contingut)) {
+            if (touch($currentFile)) {
+                $file = fopen($currentFile, "w");
+                fwrite($file, $contingut);
+                fclose($file);
+                return "$fitxer created successfully";
+            } else {
+                return "Something went wrong creating $fitxer";
+            }
+        } else if (file_exists($currentFile) && !empty($contingut)) {
+            $file = fopen($currentFile, "w");
+            fwrite($file, $contingut);
+            fclose($file);
+            return "$fitxer modified successfully";
+        } else {
+            return "$fitxer does not exist";
+        }
+    } else {
+        return "Plase, insert the file name and dir";
+    }
+}
