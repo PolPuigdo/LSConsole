@@ -146,3 +146,43 @@ function crea_modifica_fitxer($fitxer, $contingut)
         return "Plase, insert the file name and dir";
     }
 }
+
+
+function sha1($fitxer)
+{
+    $currentFile = HOME . DIRECTORY_SEPARATOR . $fitxer;
+
+    if ($fitxer != null) {
+        if (file_exists($currentFile)) {
+            if (is_file($currentFile)) {
+                return "SHA1 of $fitxer -> " . sha1_file($currentFile);
+            } else {
+                return "$fitxer is not a file";
+            }
+        } else {
+            return "$fitxer does not exist";
+        }
+    } else {
+        return "Plase, insert the name of the file";
+    }
+
+}
+
+function md5($fitxer)
+{
+    $currentFile = HOME . DIRECTORY_SEPARATOR . $fitxer;
+
+    if ($fitxer != null) {
+        if (file_exists($currentFile)) {
+            if (is_file($currentFile)) {
+                return "MD5 of $fitxer -> " . md5_file($currentFile);
+            } else {
+                return "$fitxer is not a file";
+            }
+        } else {
+            return "$fitxer does not exist";
+        }
+    } else {
+        return "Please insert the name of the file";
+    }
+}
