@@ -44,5 +44,28 @@ function stats_fitxer($fitxer)
     } else {
         return "Please, insert the name of the file";
     }
+}
+
+function esborra_fitxer($fitxer)
+{
+    $currentFile = HOME . DIRECTORY_SEPARATOR . $fitxer;
+
+    if ($fitxer != null) {
+        if (file_exists($currentFile)) {
+            if (!is_dir($currentFile)) {
+                if (unlink($currentFile)) {
+                    return "$fitxer deleted successfully";
+                } else {
+                    return "Something went wrong deleting $fitxer";
+                }
+            } else {
+                return "$fitxer is a dir, use rm -d to delete it";
+            }
+        } else {
+            return "$fitxer does not exist";
+        }
+    } else {
+        return "Please, insert a name for the file";
+    }
 
 }
