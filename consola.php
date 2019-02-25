@@ -8,7 +8,6 @@
     <title>LSConsole - Terminal Emulator</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <form action="executa.php" method="post">
@@ -21,12 +20,10 @@
         <div class="row">
             <span class="command" class="">Comand line:</span>
 
-            <input class="col-xs-10 col-xs-10 col-md-8" type="text" name="input_cmd" autofocus spellcheck="false" autocomplete="off">
+            <input class="col-xs-10 col-xs-10 col-md-8" type="text" name="input_cmd">
         </div>
     </main>
 </form>
-
-<hr>
 
 <main class="container-fluid">
     <section>
@@ -54,13 +51,5 @@
     </section>
 </main>
 
-
-<script
-        src="http://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
-        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
-        crossorigin="anonymous"></script>
 </body>
 </html>
