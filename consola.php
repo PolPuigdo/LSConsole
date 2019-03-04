@@ -8,17 +8,18 @@
     <title>LSConsole - Terminal Emulator</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <form action="executa.php" method="post">
     <main class="container">
         <section>
-            <h3>LSConsole Terminal Emulator</h3>
+            <h3>LSConsole Terminal Simulator</h3>
             <br>
         </section>
 
         <div class="row">
-            <span class="command" class=""><?php echo getcwd()?></span>
+            <span class="command" class=""><?php echo getcwd()?>:~$</span>
 
             <input class="col-xs-10 col-xs-10 col-md-8" type="text" name="input_cmd">
         </div>
