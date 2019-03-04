@@ -32,16 +32,16 @@
             <div class="col-md-12">
                 <?php
                 session_start();
-                $output = Array();
+                $exitLine = Array();
 
-                if (!empty($_SESSION['output'])) {
-                    $output = $_SESSION['output'];
-                    if (is_array($_SESSION['output'])) {
-                        foreach ($output as $singleItem) {
+                if (!empty($_SESSION['exitLine'])) {
+                    $exitLine = $_SESSION['exitLine'];
+                    if (is_array($_SESSION['exitLine'])) {
+                        foreach ($exitLine as $singleItem) {
                             echo $singleItem . "<br>";
                         }
                     } else {
-                        echo $output . "<br>";
+                        echo $exitLine . "<br>";
                     }
 
                     session_destroy();

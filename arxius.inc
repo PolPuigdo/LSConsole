@@ -2,14 +2,14 @@
 
 function find_fitxer($fitxer, $dir)
 {
-    $currentDir = getcwd() . DIRECTORY_SEPARATOR . $dir;
-    $files = scandir($currentDir);
+    $currDir = getcwd() . DIRECTORY_SEPARATOR . $dir;
+    $files = scandir($currDir);
 
     if ($fitxer != null) {
         foreach ($files as $fileToFind) {
-            if (is_file($currentDir . DIRECTORY_SEPARATOR . $fileToFind)) {
+            if (is_file($currDir . DIRECTORY_SEPARATOR . $fileToFind)) {
                 if (strtolower($fitxer) == strtolower($fileToFind)) {
-                    return "The file: $fitxer find in: $currentDir";
+                    return "The file: $fitxer find in: $currDir";
                 }
             }
         }

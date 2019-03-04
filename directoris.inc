@@ -4,11 +4,11 @@ include_once 'sistema.inc';
 
 function crea_directori($dir)
 {
-    $currentDir = getcwd() . DIRECTORY_SEPARATOR . $dir;
+    $currDir = getcwd() . DIRECTORY_SEPARATOR . $dir;
 
     if ($dir != null) {
-        if (!file_exists($currentDir)) {
-            if (mkdir($currentDir)) {
+        if (!file_exists($currDir)) {
+            if (mkdir($currDir)) {
                 return "$dir folder created successfully";
             } else {
                 return "Something went wrong creating the folder";
@@ -23,18 +23,18 @@ function crea_directori($dir)
 
 function esborra_directori($dir)
 {
-    $currentDir = getcwd() . DIRECTORY_SEPARATOR . $dir;
+    $currDir = getcwd() . DIRECTORY_SEPARATOR . $dir;
 
     if ($dir != null) {
-        if (file_exists($currentDir)) {
-            $files = scandir($currentDir);
+        if (file_exists($currDir)) {
+            $files = scandir($currDir);
             if (empty($files)) {
-                if (is_dir($currentDir)) {
-                    rmdir($currentDir);
+                if (is_dir($currDir)) {
+                    rmdir($currDir);
                 }
             } else {
                 foreach ($files as $current) {
-                    $actualFile = $currentDir . DIRECTORY_SEPARATOR . $current;
+                    $actualFile = $currDir . DIRECTORY_SEPARATOR . $current;
 
                     if ($actualFile != "." && $actualFile != "..") {
                         if (is_dir($actualFile)) {
@@ -45,7 +45,7 @@ function esborra_directori($dir)
                     }
                 }
 
-                if (rmdir($currentDir)) {
+                if (rmdir($currDir)) {
                     return "Folder deleted successfully";
                 }
             }
@@ -59,12 +59,12 @@ function esborra_directori($dir)
 
 function mou_directori($dir, $rutadesti)
 {
-    $currentDir = getcwd() . DIRECTORY_SEPARATOR . $dir;
+    $currDir = getcwd() . DIRECTORY_SEPARATOR . $dir;
     $destiny = getcwd() . DIRECTORY_SEPARATOR . $rutadesti;
 
     if ($dir != null && $rutadesti != null) {
-        if (file_exists($currentDir)) {
-            if (rename($currentDir, $destiny . DIRECTORY_SEPARATOR . $dir)) {
+        if (file_exists($currDir)) {
+            if (rename($currDir, $destiny . DIRECTORY_SEPARATOR . $dir)) {
                 return "$dir folder moved to $rutadesti successfully";
             } else {
                 return "Something went wrong";
@@ -79,11 +79,11 @@ function mou_directori($dir, $rutadesti)
 
 function copia_directori($dir, $rutadesti)
 {
-    $currentDir = getcwd() . DIRECTORY_SEPARATOR . $dir;
+    $currDir = getcwd() . DIRECTORY_SEPARATOR . $dir;
 
     if ($dir != null && $rutadesti != null) {
-        if (is_dir($currentDir)) {
-            $files = scandir($currentDir);
+        if (is_dir($currDir)) {
+            $files = scandir($currDir);
             $filesToCopy = Array();
 
             foreach ($files as $item) {

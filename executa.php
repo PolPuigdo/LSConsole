@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['input_cmd'])) {
 
     switch ($arrInput[0]) {
         case 'mkdir':
-            $_SESSION['output'] = crea_directori($arrInput[1]);
+            $_SESSION['exitLine'] = crea_directori($arrInput[1]);
             break;
 
         case 'rm':
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['input_cmd'])) {
             } else {
                 $removed = "Use a valid option";
             }
-            $_SESSION['output'] = $removed;
+            $_SESSION['exitLine'] = $removed;
             break;
 
         case 'mv':
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['input_cmd'])) {
             } else {
                 $moved = "Use a valid option";
             }
-            $_SESSION['output'] = $moved;
+            $_SESSION['exitLine'] = $moved;
             break;
 
         case 'cp':
@@ -44,35 +44,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['input_cmd'])) {
             } else {
                 $copied = "Use a valid option";
             }
-            $_SESSION['output'] = $copied;
+            $_SESSION['exitLine'] = $copied;
             break;
 
         case 'find':
-            $_SESSION['output'] = find_fitxer($arrInput[1], $arrInput[2]);
+            $_SESSION['exitLine'] = find_fitxer($arrInput[1], $arrInput[2]);
             break;
 
         case 'stats':
-            $_SESSION['output'] = stats_fitxer($arrInput[1]);
+            $_SESSION['exitLine'] = stats_fitxer($arrInput[1]);
             break;
 
         case 'vim':
-            $_SESSION['output'] = crea_modifica_fitxer($arrInput[1], $arrInput[2]);
+            $_SESSION['exitLine'] = crea_modifica_fitxer($arrInput[1], $arrInput[2]);
             break;
 
         case 'sha1':
-            $_SESSION['output'] = _sha1($arrInput[1]);
+            $_SESSION['exitLine'] = _sha1($arrInput[1]);
             break;
 
         case 'md5':
-            $_SESSION['output'] = _md5($arrInput[1]);
+            $_SESSION['exitLine'] = _md5($arrInput[1]);
             break;
 
         case 'ls':
-            $_SESSION['output'] = llistat($arrInput[1]);
+            $_SESSION['exitLine'] = llistat($arrInput[1]);
             break;
 
         case 'pwd':
-            $_SESSION['output'] = ruta();
+            $_SESSION['exitLine'] = ruta();
             break;
 
         case 'help':
@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['input_cmd'])) {
                 "pwd --- Shows the actual path", "stats -FILE- --- Show the stats of a file"
             );
 
-            $_SESSION['output'] = $commands;
+            $_SESSION['exitLine'] = $commands;
             break;
 
         default:
@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['input_cmd'])) {
                 "pwd --- Shows the actual path", "stats -FILE- --- Show the stats of a file"
             );
 
-            $_SESSION['output'] = $commands;
+            $_SESSION['exitLine'] = $commands;
             break;
     }
 

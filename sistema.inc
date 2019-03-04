@@ -2,11 +2,11 @@
 
 function llistat($dir)
 {
-    $currentDir = getcwd()  . DIRECTORY_SEPARATOR . $dir;
+    $currDir = getcwd()  . DIRECTORY_SEPARATOR . $dir;
 
     if ($dir != null) {
-        if (is_dir($currentDir)) {
-            return scandir($currentDir);
+        if (is_dir($currDir)) {
+            return scandir($currDir);
         } else {
             return "$dir is not a directory";
         }
