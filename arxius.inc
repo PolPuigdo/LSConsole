@@ -148,7 +148,7 @@ function crea_modifica_fitxer($fitxer, $contingut)
 }
 
 
-function sha1($fitxer)
+function _sha1($fitxer)
 {
     $currentFile = HOME . DIRECTORY_SEPARATOR . $fitxer;
 
@@ -168,7 +168,7 @@ function sha1($fitxer)
 
 }
 
-function md5($fitxer)
+function _md5($fitxer)
 {
     $currentFile = HOME . DIRECTORY_SEPARATOR . $fitxer;
 

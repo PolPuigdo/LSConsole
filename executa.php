@@ -1,9 +1,10 @@
 <?php
 
-include 'constants.inc';
 include 'sistema.inc';
 include 'directoris.inc';
 include 'arxius.inc';
+
+define("HOME", realpath('main'));
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['input_cmd'])) {
     session_start();
@@ -61,11 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['input_cmd'])) {
             break;
 
         case 'sha1':
-            $_SESSION['output'] = our_sha1($arrInput[1]);
+            $_SESSION['output'] = _sha1($arrInput[1]);
             break;
 
         case 'md5':
-            $_SESSION['output'] = our_md5($arrInput[1]);
+            $_SESSION['output'] = _md5($arrInput[1]);
             break;
 
         case 'ls':
@@ -77,26 +78,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['input_cmd'])) {
             break;
 
         case 'help':
-            $commands = Array("mkdir -DIRECTORY- -> Create a new directory", "rm -d -DIRECTORI- -> Delete a directory",
-                "mv -d -DIRECTORY- -PATH- -> Move a directory to a path", "cp -d -DIRECTORY- -PATH- -> Copy a direcotry to a path",
-                "find -FILE- -PATH- -> Searches for a file in a path", "stats -FILE- -> Show the stats of a file",
-                "rm -f -FILE- -> Deletes a file", "mv -f -FILE- -PATH- -> Moves a file into a directory",
-                "cp -f -FILE- -> Copies a file into a directory", "vim -FILE- -TEXT- -> Creates/modifies a file and it adds the text", "sha1 -FILE- -> Hash sha1 of a file",
-                "md5 -FILE- -> Hash md5 of a file", "ls -DIRECTORY- -> Shows all the directories inside a directory",
-                "pwd -> Shows the actual path", "stats -FILE- -> Show the stats of a file"
+            $commands = Array("mkdir -DIRECTORY- --- Create a new directory", "rm -d -DIRECTORI- --- Delete a directory",
+                "mv -d -DIRECTORY- -PATH- --- Move a directory to a path", "cp -d -DIRECTORY- -PATH- --- Copy a direcotry to a path",
+                "find -FILE- -PATH- --- Searches for a file in a path", "stats -FILE- --- Show the stats of a file",
+                "rm -f -FILE- --- Deletes a file", "mv -f -FILE- -PATH- --- Moves a file into a directory",
+                "cp -f -FILE- --- Copies a file into a directory", "vim -FILE- -TEXT- --- Creates/modifies a file and it adds the text", "sha1 -FILE- --- Hash sha1 of a file",
+                "md5 -FILE- --- Hash md5 of a file", "ls -DIRECTORY- --- Shows all the directories inside a directory",
+                "pwd --- Shows the actual path", "stats -FILE- --- Show the stats of a file"
             );
 
             $_SESSION['output'] = $commands;
             break;
-            
+
         default:
-            $commands = Array("mkdir -DIRECTORY- -> Create a new directory", "rm -d -DIRECTORI- -> Delete a directory",
-                "mv -d -DIRECTORY- -PATH- -> Move a directory to a path", "cp -d -DIRECTORY- -PATH- -> Copy a direcotry to a path",
-                "find -FILE- -PATH- -> Searches for a file in a path", "stats -FILE- -> Show the stats of a file",
-                "rm -f -FILE- -> Deletes a file", "mv -f -FILE- -PATH- -> Moves a file into a directory",
-                "cp -f -FILE- -> Copies a file into a directory", "vim -FILE- -TEXT- -> Creates/modifies a file and it adds the text", "sha1 -FILE- -> Hash sha1 of a file",
-                "md5 -FILE- -> Hash md5 of a file", "ls -DIRECTORY- -> Shows all the directories inside a directory",
-                "pwd -> Shows the actual path", "stats -FILE- -> Show the stats of a file"
+            $commands = Array("mkdir -DIRECTORY- --- Create a new directory", "rm -d -DIRECTORI- --- Delete a directory",
+                "mv -d -DIRECTORY- -PATH- --- Move a directory to a path", "cp -d -DIRECTORY- -PATH- --- Copy a direcotry to a path",
+                "find -FILE- -PATH- --- Searches for a file in a path", "stats -FILE- --- Show the stats of a file",
+                "rm -f -FILE- --- Deletes a file", "mv -f -FILE- -PATH- --- Moves a file into a directory",
+                "cp -f -FILE- --- Copies a file into a directory", "vim -FILE- -TEXT- --- Creates/modifies a file and it adds the text", "sha1 -FILE- --- Hash sha1 of a file",
+                "md5 -FILE- --- Hash md5 of a file", "ls -DIRECTORY- --- Shows all the directories inside a directory",
+                "pwd --- Shows the actual path", "stats -FILE- --- Show the stats of a file"
             );
 
             $_SESSION['output'] = $commands;
