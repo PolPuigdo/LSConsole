@@ -88,6 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['input_cmd'])) {
 
             $_SESSION['output'] = $commands;
             break;
+            
         default:
             $commands = Array("mkdir -DIRECTORY- -> Create a new directory", "rm -d -DIRECTORI- -> Delete a directory",
                 "mv -d -DIRECTORY- -PATH- -> Move a directory to a path", "cp -d -DIRECTORY- -PATH- -> Copy a direcotry to a path",
