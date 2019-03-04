@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,7 +18,7 @@
         </section>
 
         <div class="row">
-            <span class="command" class="">Comand line:</span>
+            <span class="command" class=""><?php echo getcwd()?></span>
 
             <input class="col-xs-10 col-xs-10 col-md-8" type="text" name="input_cmd">
         </div>
