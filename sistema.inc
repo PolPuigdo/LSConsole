@@ -33,9 +33,9 @@ function stats_sistema()
     $percFree = number_format($diskFree / $diskTotal * 100, 2);
     $storageFree = $gbFree . "Free GB on disk: " . $percFree . "%";
 
-    $gbStored = number_format(($diskTotal - $diskFree) / pow(10, 9), 2);
-    $percStored = number_format(($diskTotal - $diskFree) / $diskTotal * 100, 2);
-    $storageFull = $gbStored . "Full GB on disk: " . $percStored . "%";
+    $gbFull = number_format(($diskTotal - $diskFree) / pow(10, 9), 2);
+    $percFull = number_format(($diskTotal - $diskFree) / $diskTotal * 100, 2);
+    $storageFull = $gbFull . "Full GB on disk: " . $percFull . "%";
 
     array_push($sysStats, $storageFree, $storageFull);
     return $sysStats;

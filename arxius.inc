@@ -6,9 +6,9 @@ function find_fitxer($fitxer, $dir)
     $files = scandir($currDir);
 
     if ($fitxer != null) {
-        foreach ($files as $fileToFind) {
-            if (is_file($currDir . DIRECTORY_SEPARATOR . $fileToFind)) {
-                if (strtolower($fitxer) == strtolower($fileToFind)) {
+        foreach ($files as $findedFile) {
+            if (is_file($currDir . DIRECTORY_SEPARATOR . $findedFile)) {
+                if (strtolower($fitxer) == strtolower($findedFile)) {
                     return "The file: $fitxer find in: $currDir";
                 }
             }
@@ -22,20 +22,20 @@ function find_fitxer($fitxer, $dir)
 
 function stats_fitxer($fitxer)
 {
-    $currentFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
+    $currFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
 
     if ($fitxer != null) {
-        if (file_exists($currentFile)) {
+        if (file_exists($currFile)) {
             $fileStats = Array();
-            $statsReturned = stat($currentFile);
+            $returnedStats = stat($currFile);
 
-            $userId = "ID of the user property -> " . $statsReturned['uid'];
-            $groupId = "ID of the group property -> " . $statsReturned['gid'];
-            $accessDate = "Last acces -> " . gmdate("d-m-Y H:i:s", $statsReturned['atime']);
-            $modifiedDate = "Last modification -> " . gmdate("d-m-Y H:i:s", $statsReturned['mtime']);
-            $sizeBytes = "Size (bytes) -> " . $statsReturned['size'];
+            $userId = "ID of the user property -> " . $returnedStats['uid'];
+            $groupId = "ID of the group property -> " . $returnedStats['gid'];
+            $accessDate = "Last acces -> " . gmdate("d-m-Y H:i:s", $returnedStats['atime']);
+            $modificationDate = "Last modification -> " . gmdate("d-m-Y H:i:s", $returnedStats['mtime']);
+            $size = "Size (bytes) -> " . $returnedStats['size'];
 
-            array_push($fileStats, $userId, $groupId, $accessDate, $modifiedDate, $sizeBytes);
+            array_push($fileStats, $userId, $groupId, $accessDate, $modificationDate, $size);
 
             return $fileStats;
         } else {
@@ -48,12 +48,12 @@ function stats_fitxer($fitxer)
 
 function esborra_fitxer($fitxer)
 {
-    $currentFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
+    $currFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
 
     if ($fitxer != null) {
-        if (file_exists($currentFile)) {
-            if (!is_dir($currentFile)) {
-                if (unlink($currentFile)) {
+        if (file_exists($currFile)) {
+            if (!is_dir($currFile)) {
+                if (unlink($currFile)) {
                     return "$fitxer deleted successfully";
                 } else {
                     return "Something went wrong deleting $fitxer";
@@ -72,12 +72,12 @@ function esborra_fitxer($fitxer)
 
 function mou_fitxer($fitxer, $rutadesti)
 {
-    $currentFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
+    $currFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
     $destiny = getcwd() . $rutadesti;
 
     if ($fitxer != null && $rutadesti != null) {
-        if (file_exists($currentFile)) {
-            if (rename($currentFile, $destiny . DIRECTORY_SEPARATOR . $fitxer)) {
+        if (file_exists($currFile)) {
+            if (rename($currFile, $destiny . DIRECTORY_SEPARATOR . $fitxer)) {
                 return "$fitxer moved to: $rutadesti successfully";
             } else {
                 return "Something went wrong moving $fitxer to $rutadesti";
@@ -92,13 +92,13 @@ function mou_fitxer($fitxer, $rutadesti)
 
 function copia_fitxer($fitxer, $rutadesti)
 {
-    $currentFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
+    $currFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
     $destiny = getcwd() . $rutadesti;
 
     if ($fitxer != null && $rutadesti != null) {
-        if (file_exists($currentFile)) {
+        if (file_exists($currFile)) {
             if (is_dir($destiny)) {
-                if (copy($currentFile, $destiny . DIRECTORY_SEPARATOR . $fitxer)) {
+                if (copy($currFile, $destiny . DIRECTORY_SEPARATOR . $fitxer)) {
                     return "$fitxer copied to: $rutadesti successfully";
                 } else {
                     return "Something went wrong coping $fitxer";
@@ -116,26 +116,26 @@ function copia_fitxer($fitxer, $rutadesti)
 
 function crea_modifica_fitxer($fitxer, $contingut)
 {
-    $currentFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
+    $currFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
 
     if ($fitxer != null) {
-        if (!file_exists($currentFile) && empty($contingut)) {
-            if (touch($currentFile)) {
+        if (!file_exists($currFile) && empty($contingut)) {
+            if (touch($currFile)) {
                 return "$fitxer created successfully";
             } else {
                 return "Something went wrong creating $fitxer";
             }
-        } else if (!file_exists($currentFile) && !empty($contingut)) {
-            if (touch($currentFile)) {
-                $file = fopen($currentFile, "w");
+        } else if (!file_exists($currFile) && !empty($contingut)) {
+            if (touch($currFile)) {
+                $file = fopen($currFile, "w");
                 fwrite($file, $contingut);
                 fclose($file);
                 return "$fitxer created successfully";
             } else {
                 return "Something went wrong creating $fitxer";
             }
-        } else if (file_exists($currentFile) && !empty($contingut)) {
-            $file = fopen($currentFile, "w");
+        } else if (file_exists($currFile) && !empty($contingut)) {
+            $file = fopen($currFile, "w");
             fwrite($file, $contingut);
             fclose($file);
             return "$fitxer modified successfully";
@@ -150,12 +150,12 @@ function crea_modifica_fitxer($fitxer, $contingut)
 
 function _sha1($fitxer)
 {
-    $currentFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
+    $currFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
 
     if ($fitxer != null) {
-        if (file_exists($currentFile)) {
-            if (is_file($currentFile)) {
-                return "SHA1 of $fitxer -> " . sha1_file($currentFile);
+        if (file_exists($currFile)) {
+            if (is_file($currFile)) {
+                return "SHA1 of $fitxer -> " . sha1_file($currFile);
             } else {
                 return "$fitxer is not a file";
             }
@@ -170,12 +170,12 @@ function _sha1($fitxer)
 
 function _md5($fitxer)
 {
-    $currentFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
+    $currFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
 
     if ($fitxer != null) {
-        if (file_exists($currentFile)) {
-            if (is_file($currentFile)) {
-                return "MD5 of $fitxer -> " . md5_file($currentFile);
+        if (file_exists($currFile)) {
+            if (is_file($currFile)) {
+                return "MD5 of $fitxer -> " . md5_file($currFile);
             } else {
                 return "$fitxer is not a file";
             }

@@ -33,8 +33,8 @@ function esborra_directori($dir)
                     rmdir($currDir);
                 }
             } else {
-                foreach ($files as $current) {
-                    $actualFile = $currDir . DIRECTORY_SEPARATOR . $current;
+                foreach ($files as $file) {
+                    $actualFile = $currDir . DIRECTORY_SEPARATOR . $file;
 
                     if ($actualFile != "." && $actualFile != "..") {
                         if (is_dir($actualFile)) {
@@ -84,15 +84,15 @@ function copia_directori($dir, $rutadesti)
     if ($dir != null && $rutadesti != null) {
         if (is_dir($currDir)) {
             $files = scandir($currDir);
-            $filesToCopy = Array();
+            $filesInDir = Array();
 
-            foreach ($files as $item) {
-                if ($item != "." && $item != "..") {
-                    array_push($filesToCopy, copia_fitxer($dir.DIRECTORY_SEPARATOR.$item, $rutadesti));
+            foreach ($files as $file) {
+                if ($file != "." && $file != "..") {
+                    array_push($filesInDir, copia_fitxer($dir.DIRECTORY_SEPARATOR.$file, $rutadesti));
                 }
             }
 
-            return $filesToCopy;
+            return $filesInDir;
         } else {
             return "$dir is not a dir";
         }
