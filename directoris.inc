@@ -4,7 +4,7 @@ include_once 'sistema.inc';
 
 function crea_directori($dir)
 {
-    $currentDir = HOME . DIRECTORY_SEPARATOR . $dir;
+    $currentDir = getcwd() . DIRECTORY_SEPARATOR . $dir;
 
     if ($dir != null) {
         if (!file_exists($currentDir)) {
@@ -23,7 +23,7 @@ function crea_directori($dir)
 
 function esborra_directori($dir)
 {
-    $currentDir = HOME . DIRECTORY_SEPARATOR . $dir;
+    $currentDir = getcwd() . DIRECTORY_SEPARATOR . $dir;
 
     if ($dir != null) {
         if (file_exists($currentDir)) {
@@ -59,8 +59,8 @@ function esborra_directori($dir)
 
 function mou_directori($dir, $rutadesti)
 {
-    $currentDir = HOME . DIRECTORY_SEPARATOR . $dir;
-    $destiny = HOME . DIRECTORY_SEPARATOR . $rutadesti;
+    $currentDir = getcwd() . DIRECTORY_SEPARATOR . $dir;
+    $destiny = getcwd() . DIRECTORY_SEPARATOR . $rutadesti;
 
     if ($dir != null && $rutadesti != null) {
         if (file_exists($currentDir)) {
@@ -79,7 +79,7 @@ function mou_directori($dir, $rutadesti)
 
 function copia_directori($dir, $rutadesti)
 {
-    $currentDir = HOME . DIRECTORY_SEPARATOR . $dir;
+    $currentDir = getcwd() . DIRECTORY_SEPARATOR . $dir;
 
     if ($dir != null && $rutadesti != null) {
         if (is_dir($currentDir)) {

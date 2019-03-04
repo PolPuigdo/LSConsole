@@ -4,8 +4,6 @@ include 'sistema.inc';
 include 'directoris.inc';
 include 'arxius.inc';
 
-define("HOME", realpath('main'));
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['input_cmd'])) {
     session_start();
     $inputTaken = $_POST['input_cmd'];

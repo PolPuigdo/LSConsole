@@ -2,7 +2,7 @@
 
 function llistat($dir)
 {
-    $currentDir = HOME . DIRECTORY_SEPARATOR . $dir;
+    $currentDir = getcwd()  . DIRECTORY_SEPARATOR . $dir;
 
     if ($dir != null) {
         if (is_dir($currentDir)) {
@@ -11,7 +11,7 @@ function llistat($dir)
             return "$dir is not a directory";
         }
     } else {
-        return scandir(HOME);
+        return scandir(getcwd());
     }
 
 }

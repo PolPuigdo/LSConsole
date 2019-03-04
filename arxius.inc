@@ -2,7 +2,7 @@
 
 function find_fitxer($fitxer, $dir)
 {
-    $currentDir = HOME . DIRECTORY_SEPARATOR . $dir;
+    $currentDir = getcwd() . DIRECTORY_SEPARATOR . $dir;
     $files = scandir($currentDir);
 
     if ($fitxer != null) {
@@ -22,7 +22,7 @@ function find_fitxer($fitxer, $dir)
 
 function stats_fitxer($fitxer)
 {
-    $currentFile = HOME . DIRECTORY_SEPARATOR . $fitxer;
+    $currentFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
 
     if ($fitxer != null) {
         if (file_exists($currentFile)) {
@@ -48,7 +48,7 @@ function stats_fitxer($fitxer)
 
 function esborra_fitxer($fitxer)
 {
-    $currentFile = HOME . DIRECTORY_SEPARATOR . $fitxer;
+    $currentFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
 
     if ($fitxer != null) {
         if (file_exists($currentFile)) {
@@ -72,8 +72,8 @@ function esborra_fitxer($fitxer)
 
 function mou_fitxer($fitxer, $rutadesti)
 {
-    $currentFile = HOME . DIRECTORY_SEPARATOR . $fitxer;
-    $destiny = HOME . DIRECTORY_SEPARATOR . $rutadesti;
+    $currentFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
+    $destiny = getcwd() . $rutadesti;
 
     if ($fitxer != null && $rutadesti != null) {
         if (file_exists($currentFile)) {
@@ -92,8 +92,8 @@ function mou_fitxer($fitxer, $rutadesti)
 
 function copia_fitxer($fitxer, $rutadesti)
 {
-    $currentFile = HOME . DIRECTORY_SEPARATOR . $fitxer;
-    $destiny = HOME . DIRECTORY_SEPARATOR . $rutadesti;
+    $currentFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
+    $destiny = getcwd() . $rutadesti;
 
     if ($fitxer != null && $rutadesti != null) {
         if (file_exists($currentFile)) {
@@ -116,7 +116,7 @@ function copia_fitxer($fitxer, $rutadesti)
 
 function crea_modifica_fitxer($fitxer, $contingut)
 {
-    $currentFile = HOME . DIRECTORY_SEPARATOR . $fitxer;
+    $currentFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
 
     if ($fitxer != null) {
         if (!file_exists($currentFile) && empty($contingut)) {
@@ -150,7 +150,7 @@ function crea_modifica_fitxer($fitxer, $contingut)
 
 function _sha1($fitxer)
 {
-    $currentFile = HOME . DIRECTORY_SEPARATOR . $fitxer;
+    $currentFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
 
     if ($fitxer != null) {
         if (file_exists($currentFile)) {
@@ -170,7 +170,7 @@ function _sha1($fitxer)
 
 function _md5($fitxer)
 {
-    $currentFile = HOME . DIRECTORY_SEPARATOR . $fitxer;
+    $currentFile = getcwd() . DIRECTORY_SEPARATOR . $fitxer;
 
     if ($fitxer != null) {
         if (file_exists($currentFile)) {
