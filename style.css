@@ -5,3 +5,7 @@ input[type="text"] {
 body {
 	font: 1em 'Inconsolata', monospace;
 }
+
+input[type="text"]:focus {
+    outline-width: 0;
+}

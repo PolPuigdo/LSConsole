@@ -19,9 +19,9 @@
         </section>
 
         <div class="row">
-            <span class="command" class=""><?php echo getcwd()?>:~$</span>
+            <span class="command"><?php echo getcwd()?>:~$</span>
 
-            <input class="col-xs-10 col-xs-10 col-md-8" type="text" name="input_cmd">
+            <input class="col-xs-10 col-xs-10 col-md-8" type="text" name="input_cmd" autofocus="true">
         </div>
     </main>
 </form>
